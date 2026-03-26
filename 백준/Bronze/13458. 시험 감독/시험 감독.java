@@ -1,0 +1,39 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
+        st = new StringTokenizer(br.readLine());
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        st = new StringTokenizer(br.readLine());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+
+        // 3 4 5 -> 1 2 3
+        long total = n; // n: 시험장의 개수 (3), 각 시험장마다 총감독관 1명 -> 총감독관 3명은 필수
+        for (int i = 0; i < n; i++) {
+            arr[i] -= b; // 1 2 3
+
+            if (arr[i] > 0) { // 부감독관이 필요한 경우 -> 1
+                total += arr[i] / c; // 1 -> 1 / 2 -> 2 / 3 -> 3
+
+                if (arr[i] % c != 0) {
+                    total++;
+                }
+            }
+        }
+
+        System.out.println(total);
+    }
+}
