@@ -14,15 +14,11 @@ public class Main {
         StringTokenizer st;
 
         int n = Integer.parseInt(br.readLine());
-        int[] a = new int[n];
         Map<Integer, Integer> freq = new HashMap<>();
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            a[i] = Integer.parseInt(st.nextToken());
-        }
-
-        for (int num : a) {
+            int num = Integer.parseInt(st.nextToken());
             freq.put(num, freq.getOrDefault(num, 0) + 1);
         }
 
@@ -35,11 +31,12 @@ public class Main {
         }
 
         for (int num : b) {
-            if (freq.get(num) == null) {
-                bw.write(0 + " ");
+            Integer cnt = freq.get(num);
+            if (cnt == null) {
+                bw.write("0 ");
                 continue;
             }
-            bw.write(freq.get(num) + " ");
+            bw.write(cnt + " ");
         }
 
         br.close();
