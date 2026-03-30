@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Main {
@@ -10,16 +9,11 @@ public class Main {
         StringBuilder sb;
         int n = Integer.parseInt(br.readLine());
 
-        PriorityQueue<Integer> pQ = new PriorityQueue<>(new Comparator<>() {
-            public int compare(Integer a, Integer b) {
-                if (Math.abs(a) > Math.abs(b)) {
-                    return Math.abs(a) - Math.abs(b);
-                } else if (Math.abs(a) == Math.abs(b)) {
-                    return a - b;
-                } else {
-                    return -1;
-                }
+        PriorityQueue<Integer> pQ = new PriorityQueue<>((o1, o2) -> {
+            if (Math.abs(o1) == Math.abs(o2)) {
+                return o1 - o2;
             }
+            return Math.abs(o1) - Math.abs(o2);
         });
 
         sb = new StringBuilder();
