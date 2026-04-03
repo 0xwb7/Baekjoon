@@ -22,10 +22,6 @@ public class Main {
                 int tmp = k / arr[i]; // k=4, (1, 3) 있을 때, tmp = 4 / 3 = 1  / 1
                 cnt += tmp; // cnt = 1
                 k = k - arr[i] * tmp; // 4 = 4 - 3 * 1 = 1
-
-                if (k == 0) {
-                    break;
-                }
             }
         }
 
